@@ -5,7 +5,7 @@ export default function Footer() {
     return (
         <footer className={styles.footer}>
             <p>
-                <span>PokeNext &copy; 2021</span> 
+                <span>PokeNext &copy; 2022</span> 
             </p>
         </footer>
     );
