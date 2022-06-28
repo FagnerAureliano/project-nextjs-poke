@@ -1,7 +1,14 @@
 import Image from "next/image";
+import { useRouter } from "next/router";
 import styles from "../../styles/Pokemon.module.css";
 
 export default function Pokemon({ pokemon }: any) {
+  const router = useRouter()
+
+  if(router.isFallback){
+    return <div>Loading...</div>
+  }
+
   return (
     <div className={styles.pokemon_container}>
       <h1 className={styles.pokemon_title}>{pokemon.name}</h1>
@@ -42,13 +49,13 @@ export default function Pokemon({ pokemon }: any) {
   );
 }
 
-export async function getServerSideProps(ctx: any) {
+export async function getServerSideProps(ctx: any) { 
   const { id } = ctx.query;
 
   const res = await fetch(`https://pokeapi.co/api/v2/pokemon/${id}`);
   const pokemon = await res.json();
 
   return {
-    props: { pokemon, fallback: false },
+    props: { pokemon, fallback: true },
   };
 }
