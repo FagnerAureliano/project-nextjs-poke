@@ -4,7 +4,7 @@ import Image from "next/image";
 import styles from "../styles/Home.module.css";
 
 import { GetStaticProps } from "next";
-import Card from "./components/Card";
+import Card from "../components/Card";
 
 export const getStaticProps: GetStaticProps = async (ctx) => {
   const api = "https://pokeapi.co/api/v2/pokemon/";
